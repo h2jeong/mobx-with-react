@@ -1,10 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "mobx-react";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+// import CounterStore from "./stores/counter";
+// import MarketStore from "./stores/market";
+import RootStore from "./stores";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// const counter = new CounterStore();
+// const market = new MarketStore();
+const root = new RootStore();
+
+ReactDOM.render(
+  <Provider
+    {...root}
+    // counter={counter} market={market}
+  >
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
